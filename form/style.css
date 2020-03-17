@@ -9,14 +9,11 @@ body {
     background-image: -webkit-linear-gradient(180deg, rgb(23, 201, 243) 0%, rgb(59, 205, 190) 100%, rgb(59, 205, 190) 100%, rgb(59, 205, 190) 100%)
 }
 
-
-h1 {
+h1,h2 {
     text-align: center;
     margin-top: 40px;
     margin-bottom: 40px;
 }
-
-
 
 /* CONTAINER */
 
@@ -45,7 +42,6 @@ h1 {
     font-size: 14pt;
 }
 
-
 input {
     width: 50px;
     border: none;
@@ -71,6 +67,13 @@ input:focus {
 
 /* SELECT */
 
+.field-block{
+    margin-top: 50px auto;
+}
+.field-block-select p{
+    margin-top: 10px;
+}
+
 .field-block-select {
     display: flex;
     justify-content: space-between;
@@ -89,7 +92,7 @@ input:focus {
 
 .select_wrap p {
     font-size: 12pt;
-    margin: 0;
+    margin: 0px;
 
 }
 
@@ -100,7 +103,7 @@ input:focus {
     position: relative;
     cursor: pointer;
     padding: 5px 10px;
-    margin-top: 10px;
+    margin-bottom: 5px;
 
 }
 
@@ -167,7 +170,7 @@ input:focus {
 
 
 .block-btn-submit {
-    margin: 50px auto 0;
+    margin: 30px auto 0;
     height: 50px;
     width: 130px;
     display: block;
@@ -253,4 +256,35 @@ input:focus {
         transform: translate(-50%, -50%);
         opacity: 1;
     }
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.5)
+}
+
+.content-modal {
+    margin: 0 auto;
+    width: 400px;
+    height: 300px;
+
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    background-color: #fff;
+
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.3);
 }
