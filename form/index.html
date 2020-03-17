@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="script.js"></script>
+</head>
+
+<body>
+    <div class="container slideup">
+        <h1>Расчитайте стоимость вашего отдыха</h1>
+        <div class="block">
+            <form>
+                <div class="field-block">
+                    <p>Количество людей:<input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        type = "number"
+                        maxlength = "1">
+                </div>
+
+                <div class="field-block">
+                    <p>На сколько дней:<input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        type = "number"
+                        maxlength = "2">
+                </div>
+
+                <div class="field-block-select">
+                    <p>Выберите базу:</p>
+                        <div class="select_wrap">
+                            <div class="default_option">
+                              <div class="option" id="def_first_option"><p>не выбранно</p></div>
+                            </div>
+                            <div class="select_ul">
+                              <div class="option"><p>Голицыно</p></div>
+                              <div class="option"><p>Крутицы</p></div>
+                              <div class="option"><p>Сокол</p></div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="field-block-select">
+                    <p>Уровень комфорта:</p>
+                        <div class="select_wrap">
+                            <div class="default_option">
+                              <div class="option"><p>не выбранно</p></div>
+                            </div>
+                            <div class="select_ul">
+                              <div class="option"><p>Стандарт</p></div>
+                              <div class="option"><p>Семейный</p></div>
+                              <div class="option"><p>Комфорт+</p></div>
+                              <div class="option"><p>Люкс</p></div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="block-btn-submit">
+                    <div>
+                        <button type="submit" class="btn-submit">посчитать</button>
+                    </div>
+                </div>
+                
+            </form> 
+        </div>
+    </div>
+
+</body>
+</html>
