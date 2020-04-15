@@ -1,5 +1,6 @@
 import React from 'react'
 import './Header.css'
+import {NavLink} from 'react-router-dom';
 
 
 export default function() {
@@ -7,9 +8,9 @@ export default function() {
         <header className='header'>
         <div className='header__logo'>ЦИФРОВОЙ ПРОПУСК</div>
         <div className='header-nav'>
-            <a href="/index.html">Временный пропуск</a>
-            <a href="/permanent.html">Постоянный пропуск</a>
-            <a href="/org-request.html">Заявка от организации</a>
+            <NavLink to="/temporary">Временный пропуск</NavLink>
+            <NavLink to="/permanent">Постоянный пропуск</NavLink>
+            <NavLink to="/org-request">Заявка от организации</NavLink>
         </div>
         <div className='header-menu-img'>
             <div className="header-menu-img__line"></div>

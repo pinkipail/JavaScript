@@ -1,48 +1,44 @@
 import React from 'react'
 import './PermanentPass.css'
+import Pass from '../components/Pass/Pass';
+import PassTitle from '../components/Pass/PassTitle/PassTitle';
+import PassSelect from '../components/Pass/PassSelect/PassSelect';
+import PassInput from '../components/Pass/PassInput/PassInput';
+import PassTextArea from '../components/Pass/PassTextArea/PassTextArea';
+import PassButton from '../components/Pass/PassButton/PassButton';
 
 export default function() {
     return (
-        <div className='temporary-pass'>
-            <form>
-                <div className='pass__title'>
-                    Запрос постоянного пропуска
-                </div>
-                <select className="select" name="reason" required="required">
-                    <option value="">Основания для работы в условиях повышенной опасности</option>
-                    <option>соцобслуживание</option>
-                    <option>непрерывно действующие организации</option>
-                    <option>обеспечение населения продуктами и ТПП</option>
-                    <option>неотложные работы в условиях ЧС</option>
-                </select>
-
-                <input type="text"  className='input' placeholder="Наименование организации" name="org_name" required="required"/>
-
-                <input type="text" className='input' placeholder="Место нахождения организации" name="org_address" required="required"/>
-
-                <input type="text" className='input' placeholder="ОКТМО" name="oktmo" required="required"/>  
-
-                <input type="tel" className='input' placeholder="Мобильный телефон руководителя" name="chiefs_phone" required="required"/>
-
-                <select className='select' name="operation_mode" required="required" >
-                    <option defaultValue>Режим работы</option>
-                    <option>По месту нахождения организации</option>
-                    <option>Разъездная</option>
-                </select>
-
-                <select className='select' name="schedule" required="required">
-                    <option defaultValue>График работы</option>
-                    <option>Односменный</option>
-                    <option>Многосменный</option>
-                    <option>Ненормированный</option>
-                </select>
-
-                <textarea className='text-area' placeholder="Пожалуйста, укажите дополнительную информацию для принятия решения о выдаче пропуска в соответствии с Рекомендациями Минтруда РФ от 26.03.2020 в связи с Указом Президента РФ от 25.03.2020 № 206, а также Дополнением к Рекомендациям Минтруда РФ от 27.03.2020 г.">
-
-                </textarea>
-
-                <button className='btn-submit'>Запросить пропуск</button>
-            </form>
-        </div>
+        <Pass>
+            <PassTitle>
+                Запрос постоянного пропуска
+            </PassTitle>
+            <PassSelect name='reason'>
+                <option value=''>Основания для работы в условиях повышенной опасности</option>
+                <option>соцобслуживание</option>
+                <option>непрерывно действующие организации</option>
+                <option>обеспечение населения продуктами и ТПП</option>
+                <option>неотложные работы в условиях ЧС</option>
+            </PassSelect>
+            <PassInput type='text' name='org_name' placeholder='Наименование организации'/>
+            <PassInput type='text' placeholder='Место нахождения организации' name='org_address' id='address'/>
+            <PassInput type='text' placeholder='ОКТМО' name='oktmo'/>  
+            <PassInput type='tel' placeholder='Мобильный телефон руководителя' name='chiefs_phone'/>
+            <PassSelect name='operation_mode'>
+                <option value=''>Режим работы</option>
+                <option>По месту нахождения организации</option>
+                <option>Разъездная</option>
+            </PassSelect>
+            <PassSelect name='schedule'>
+                <option value=''>График работы</option>
+                <option>Односменный</option>
+                <option>Многосменный</option>
+                <option>Ненормированный</option>
+            </PassSelect>
+            <PassTextArea placeholder='Пожалуйста, укажите дополнительную информацию для принятия решения о выдаче пропуска в соответствии с Рекомендациями Минтруда РФ от 26.03.2020 в связи с Указом Президента РФ от 25.03.2020 № 206, а также Дополнением к Рекомендациям Минтруда РФ от 27.03.2020 г.'></PassTextArea>
+            <PassButton>
+                Запросить пропуск
+            </PassButton>
+        </Pass>
     )
 }

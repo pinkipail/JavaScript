@@ -1,43 +1,51 @@
 import React from 'react'
 import './RequestFromOrganization.css'
+import Pass from '../components/Pass/Pass';
+import PassTitle from '../components/Pass/PassTitle/PassTitle';
+import PassSubtitle from '../components/Pass/PassSubtitle/PassSubtitle';
+import PassSelect from '../components/Pass/PassSelect/PassSelect';
+import PassInput from '../components/Pass/PassInput/PassInput';
+import UploadFile from '../components/UploadFile/UploadFile';
+import PassBlockWarning from '../components/Pass/PassBlockWarning/PassBlockWarning';
+import PassButton from '../components/Pass/PassButton/PassButton';
+import { Link } from 'react-router-dom';
 
 export default function() {
+
     return (
-        <div className='request-from-organization'>
-            <form>
-                <div className='pass__title'>
+        <Pass>
+            <PassTitle>
                 Заявка от организации
-                </div>
-                <div className='pass__subtitle'>
-                    На выдачу постоянных пропусков сотрудникам организации в случаях, предусмотренных <a href='/'>Положением</a>.
-                </div>
-                <select className='select' name="reason" required="required">
-                    <option value="">Тип организации</option>
-                    <option>Здравоохранение</option>
-                    <option>Службы ЖКХ</option>
-                    <option>Промышленность</option>
-                    <option>Волонтёр</option>
-                    <option>Прочее</option></select>
+            </PassTitle>
+            <PassSubtitle >
+                На выдачу постоянных пропусков сотрудникам организации в случаях, предусмотренных <Link to='#'>Положением</Link>.
+            </PassSubtitle >
 
-                <input type="text"  className='input' placeholder="Наименование организации" name="org_name" required="required"/>
+            <PassSelect name="reason">
+                <option value="">Тип организации</option>
+                <option>Здравоохранение</option>
+                <option>Службы ЖКХ</option>
+                <option>Промышленность</option>
+                <option>Волонтёр</option>
+                <option>Прочее</option>
+            </PassSelect>
 
-                <input type="text" className='input' placeholder="Адрес организации" name="org_address" required="required"/>
-
-                <input type="text" className='input' placeholder="ОКТМО" name="oktmo" required="required"/>  
-
-                <input type="tel" className='input' placeholder="Мобильный телефон руководителя" name="chiefs_phone" required="required"/>
-
-                <input type="tel" className='input' placeholder="Мобильный телефон заявителя" name="my_phone" required="required"/>
-
-                <input type="text" className='input' placeholder="Мобильный телефон заявителя" name="my_phone" required="required"/>
-
-
-                <div className='pass__subtitle'>
-                    Файл заявки должен соответствовать шаблону (<a href='/'>скачать шаблон</a>). Допустимые форматы файла — XLS (Excel) или CSV.
-                </div>
-
-                <button className='btn-submit'>Запросить пропуск</button>
-            </form>
-        </div>
+            <PassInput type="text" placeholder="Наименование организации" name="org_name"/>
+            <PassInput type="text" placeholder="Адрес организации" name="org_address"  id="address"/>
+            <PassInput type="text" placeholder="ОКТМО" name="oktmo" />  
+            <PassInput type="tel" placeholder="Мобильный телефон руководителя" name="chiefs_phone"/>
+            <PassInput type="tel" placeholder="Мобильный телефон заявителя" name="my_phone"/>
+            <UploadFile label='Файл заявки (XLS или CSV)' name='file' accept=".xls, .csv"/>
+            <PassSubtitle>
+                Файл заявки должен соответствовать шаблону (<a download href='../../public/samples/request.xls'>скачать шаблон</a>). Допустимые форматы файла — XLS (Excel) или CSV.
+            </PassSubtitle>
+            <PassBlockWarning>
+                Пример файла заявки в формате XLS: <a download href='../../public/samples/request.xls'>скачайте файл себе на компьютер</a> и выберите его.
+            </PassBlockWarning>
+            <PassBlockWarning>
+                Пример файла заявки в формате CSV: <a download href='../../public/samples/request.csv'>скачайте файл себе на компьютер</a>, выберите его и укажите CP-1251 в качестве кодировки файла и ; в качестве разделителя значений.
+            </PassBlockWarning>
+            <PassButton>Запросить пропуск</PassButton>
+        </Pass>
     )
 }

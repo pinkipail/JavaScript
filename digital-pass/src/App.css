@@ -12,6 +12,11 @@ input {
   outline: none;
 }
 
+/* Hidde scrollbar */
+html::-webkit-scrollbar { width: 0; }/* хром, сафари */
+html { -ms-overflow-style: none; } /* ie 10+ */
+html { overflow: -moz-scrollbars-none; }/* фф (свойство больше не работает, других способов тоже нет)*/
+
 body {
   background: rgb(55,202,255);
   background: -moz-linear-gradient(90deg, rgba(55,202,255,1) 0%, rgba(29,179,235,1) 50%, rgba(0,147,199,1) 100%);

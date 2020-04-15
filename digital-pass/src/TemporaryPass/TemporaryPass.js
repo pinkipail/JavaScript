@@ -1,18 +1,25 @@
 import React from 'react'
 import './TemporaryPass.css'
+import Pass from '../components/Pass/Pass';
+import PassTitle from '../components/Pass/PassTitle/PassTitle';
+import PassSubtitle from '../components/Pass/PassSubtitle/PassSubtitle';
+import {Link} from 'react-router-dom';
+import PassSelect from '../components/Pass/PassSelect/PassSelect';
+import PassInput from '../components/Pass/PassInput/PassInput';
+import PassButton from '../components/Pass/PassButton/PassButton';
+import Flatpickr from "react-flatpickr";
+import "flatpickr/dist/themes/material_green.css";
 
 export default function() {
     return (
-        <div className='pass'>
-        <form>
-          <div className='pass__title'>
+        <Pass>
+          <PassTitle>
             Запрос временного пропуска
-          </div>
-          <div className='pass__subtitle'>
-            Временный поиск выдается для разового покидания места проживания по причинам, предусмотренным соответствующим 
-            <a href='/#'>Указом</a>.
-          </div>
-          <select className='select' required>
+          </PassTitle>
+          <PassSubtitle>
+            Временный поиск выдается для разового покидания места проживания по причинам, предусмотренным соответствующим <Link to='#'>Указом</Link>.
+          </PassSubtitle>
+          <PassSelect name='reason'>
             <option value=''>Причина запроса пропуска</option>
             <option>на работу</option>
             <option>в магазин / аптеку</option>
@@ -20,10 +27,22 @@ export default function() {
             <option>в банк / организацию</option>
             <option>к родственникам</option>
             <option>прогулка</option>
-          </select>
-          <input className='input' type="text" id="address" name="address" placeholder='Адрес назначения' required />
-          <input className='input date' type="date" placeholder='Дата и время начала пропуска' required />
-          <select className='select' required>
+          </PassSelect>
+          <PassInput type='text' name='address' placeholder='Адрес назначения' id='address'/>
+                      
+          <Flatpickr
+            options={{
+              enableTime: true,
+              dateFormat: "d.m.Y H:i",
+              time_24hr: true,
+            }}
+            render={
+              (props, ref) => {
+                return <PassInput type='date' name='date' placeholder='Дата и время начала пропуска'  inputRef={ref}/>
+              }}
+          />
+          
+          <PassSelect name='period'>
             <option value=''>Срок действия пропуска</option>
             <option>15 минут</option>
             <option>30 минут</option>
@@ -31,15 +50,14 @@ export default function() {
             <option>1 час</option>
             <option>1,5 часа</option>
             <option>2 часа</option>
-          </select>
-          <select className='select' required>
+          </PassSelect>
+          <PassSelect name='transport'>
             <option value=''>Тип транспорта</option>
             <option>Пешком</option>
             <option>Общественный транспорт</option>
             <option>Личный автомобиль</option>
-          </select>
-          <button className='btn-submit' type='submit'>Запросить пропуск</button>
-        </form>
-      </div>
+          </PassSelect>
+          <PassButton>Запросить пропуск</PassButton>
+      </Pass>
     )
 }
