@@ -1,0 +1,12 @@
+.right-block {
+    width: 600px;
+    height: 600px;
+
+    border: 2px solid #ff3f53;
+    border-left: none;
+    position: relative;
+}
+
+.right-block .title{
+    color: #fff;
+}

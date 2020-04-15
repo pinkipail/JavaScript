@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './TemporaryPass.css'
 import Pass from '../components/Pass/Pass';
 import PassTitle from '../components/Pass/PassTitle/PassTitle';
@@ -11,6 +11,7 @@ import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/themes/material_green.css";
 
 export default function() {
+
     return (
         <Pass>
           <PassTitle>
@@ -22,13 +23,13 @@ export default function() {
           <PassSelect name='reason'>
             <option value=''>Причина запроса пропуска</option>
             <option>на работу</option>
-            <option>в магазин / аптеку</option>
+            <option>в магазин/аптеку</option>
             <option>к врачу</option>
-            <option>в банк / организацию</option>
+            <option>в банк/организацию</option>
             <option>к родственникам</option>
             <option>прогулка</option>
           </PassSelect>
-          <PassInput type='text' name='address' placeholder='Адрес назначения' id='address'/>
+          <PassInput onChange={()=> console.log('fdsfsd')} type='text' name='address' placeholder='Адрес назначения' id='address'/>
                       
           <Flatpickr
             options={{
@@ -57,7 +58,7 @@ export default function() {
             <option>Общественный транспорт</option>
             <option>Личный автомобиль</option>
           </PassSelect>
-          <PassButton>Запросить пропуск</PassButton>
+          <PassButton content='hello'>Запросить пропуск</PassButton>
       </Pass>
     )
 }

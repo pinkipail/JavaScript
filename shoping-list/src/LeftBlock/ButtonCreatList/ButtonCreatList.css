@@ -1,0 +1,23 @@
+.left-block-item__create{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 50px;
+
+    background: #ff3f53;
+    
+    border-bottom: 1px solid #ff3f53;
+    border-top: 1px solid #ff3f53;
+
+    color: #000;
+    font-size: 15pt;
+    
+    transition-duration: 0.4s;
+}
+
+.left-block-item__create:hover{
+    color: #fff;
+    background: #000;
+}

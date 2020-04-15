@@ -38,3 +38,14 @@
     border-left: 1px solid #999;
   
   }
+
+  @media(max-width: 576px){
+    .file-mask{
+      height: 35px;
+      font-size: 14px;
+    }
+  
+    .file-mask__button {
+      font-size: 12px;
+    }
+  }

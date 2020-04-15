@@ -1,10 +1,10 @@
 import React from 'react'
 import './PassButton.css'
 
-export default function({children}) {
+export default function(props) {
     return (
         <button className='btn-submit'>
-            {children}
+            {props.children}
         </button>
     )
 }

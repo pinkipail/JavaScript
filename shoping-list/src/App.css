@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body {
+    background: #000;
+    font-family: 'Roboto', sans-serif;
+}
+p{
+    display: inline-block;
+}
+.right-block__item input[type="checkbox"]{
+    display: none;
+}
+
+/* CONTAINER */
+
+.container {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 25px auto;
+    width: 900px;
+    height: 600px;    
+}
+
+
+
