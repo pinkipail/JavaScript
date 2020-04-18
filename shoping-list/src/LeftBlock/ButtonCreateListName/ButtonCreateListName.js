@@ -1,6 +1,6 @@
 import React from 'react';
 import "./ButtonCreateListName.css";
-import { showCreateListName } from '../../redux/actions';
+import { showCreateListName } from '../../redux/actions/actionsListName';
 import { connect } from 'react-redux';
 
 const ButtonCreateListName = ({showWindow})=>{

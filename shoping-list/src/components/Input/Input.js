@@ -2,8 +2,17 @@ import React from 'react';
 import './Input.css'
 
 
-export default function({placeholder, className}){
+export default function(props){
     return (
-        <input placeholder={placeholder} type='text' className={`input ${className}`}   autocomplete="off"/> 
+        <input 
+            onChange={props.handlerChange}
+            placeholder={props.placeholder}
+            value={props.value}  
+            className={`input ${props.className}`}
+            maxlenght={props.maxlenght}
+            type='text'
+            autoComplete="off"
+            autoFocus={props.autoFocus}
+        /> 
     )
 }

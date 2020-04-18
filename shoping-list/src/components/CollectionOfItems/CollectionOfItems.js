@@ -15,6 +15,7 @@ export default function(props){
             </Item>
         )
 
+    
     return (
         props.collection.map((item,index)=>{
             return ( 

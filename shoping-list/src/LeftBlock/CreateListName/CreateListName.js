@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import "./CreateListName.css";
 import { connect } from 'react-redux';
-import {createListName, hideCreateListName} from '../../redux/actions';
+import {createListName, hideCreateListName} from '../../redux/actions/actionsListName';
 
 class CreateListName extends React.Component{
     constructor(props){

@@ -24,14 +24,6 @@
     background: url('icon/btn-edit-active.svg');
 }
 
-.btn-select {
-    border: 1px solid #ff3f53;
-    background: none;
-}
-
-.btn-select:hover {
-    background: url('icon/btn-select-active.svg');
-}
 
 .btn-add {
     background: url('icon/btn-add.svg');
@@ -39,4 +31,21 @@
 
 .btn-add:hover {
     background: url('icon/btn-add-active.svg');
+}
+
+.btn-confirm {
+    background: url('icon/btn-select.svg');
+}
+
+.btn-confirm:hover {
+    background: url('icon/btn-select-active.svg');
+}
+
+.btn-select {
+    border: 1px solid #ff3f53;
+    background: none;
+}
+
+.btn-select:hover {
+    background: url('icon/btn-select-active.svg');
 }

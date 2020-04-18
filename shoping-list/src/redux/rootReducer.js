@@ -1,7 +1,10 @@
-import { CREATE_LIST_NAME, SELECT_LIST_NAME } from "./types";
-import { REMOVE_LIST_NAME } from "./types"
-import { SHOW_CREATE_LIST_NAME } from "./types";
-import { HIDE_CREATE_LIST_NAME } from "./types";
+import { CREATE_LIST_NAME,
+    CHANGE_LIST_NAME, 
+    REMOVE_LIST_NAME, 
+    SELECT_LIST_NAME, 
+    SHOW_CREATE_LIST_NAME, 
+    HIDE_CREATE_LIST_NAME,  
+    REMOVE_PRODUCT} from './types'
 
 const initialState = {
 
@@ -41,21 +44,52 @@ const initialState = {
 export const rootReducer = (state = initialState, action)=>{
 
     switch (action.type) {  
-        case CREATE_LIST_NAME:
-            return {...state, shopingLists: state.shopingLists.concat( {title: action.payload, products: []})}
-
-        case REMOVE_LIST_NAME:
-                return {...state, shopingLists: state.shopingLists.filter((item, i)=> i !== action.payload)}
-
         case SELECT_LIST_NAME:
             return {...state, activeList: action.payload}
+        
+        case CHANGE_LIST_NAME:
+            return {...state, shopingLists: state.shopingLists.map((listName, i) => {
+                if(i === action.index)
+                    listName.title =  action.value
+                return listName
+            })}
+
+        case REMOVE_LIST_NAME:
+            const tempActiveList = (state.activeList === state.shopingLists.length - 1 && state.activeList !== 0)
+                ? state.activeList - 1
+                : state.activeList
+
+            return {
+                    ...state,
+                    shopingLists: state.shopingLists.filter((item, i)=> i !== action.payload),
+                    activeList:tempActiveList
+                }
+
+        case CREATE_LIST_NAME:
+            return {
+                    ...state,
+                    shopingLists: state.shopingLists.concat({title: action.payload, products: []}),
+                    activeList: state.shopingLists.length
+                }
 
         case SHOW_CREATE_LIST_NAME:
             return {...state, displayCreateListName: true}
 
         case HIDE_CREATE_LIST_NAME:
             return {...state, displayCreateListName: false}
-    
+    /* PRODUCT */
+        case REMOVE_PRODUCT:
+            let changeShopingList = state.shopingLists[state.activeList]
+            changeShopingList.products = changeShopingList.products.filter((item, i)=> i !== action.id)
+            console.log(changeShopingList);
+            
+            let tempState = state.shopingLists
+            tempState.splice(state.activeList, 1, changeShopingList)
+            console.log(tempState)
+            return {
+                    ...state,
+                    shopingLists: tempState
+                }
         default:
             return state
     }

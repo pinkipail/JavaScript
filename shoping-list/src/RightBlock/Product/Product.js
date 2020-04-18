@@ -3,8 +3,12 @@ import './Product.css'
 import BtnBlock from '../../components/BtnBlock/BtnBlock'
 import BtnIcon from '../../components/BtnIcon/BtnIcon';
 import Item from '../../components/Item/Item';
+import { useDispatch } from 'react-redux';
+import { removeProduct } from '../../redux/actions/actionsProduct';
 
 export default function({item, index}){
+
+    const dispatch = useDispatch()
 
     return(
         <Item>
@@ -17,7 +21,13 @@ export default function({item, index}){
 
                 <BtnBlock>
                     <BtnIcon class={'btn-edit'}/>
-                    <BtnIcon class={'btn-remove'}/>
+                    <BtnIcon 
+                    class='btn-remove'
+                    handlerClick={(event)=>{
+                        event.stopPropagation()
+                        dispatch(removeProduct(index))}
+                    }
+                />
                 </BtnBlock>
         </Item>
     )

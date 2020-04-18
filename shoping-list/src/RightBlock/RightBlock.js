@@ -5,30 +5,22 @@ import CollectionOfItems from '../components/CollectionOfItems/CollectionOfItems
 import Product from './Product/Product'
 import CreateProduct from './CreateProduct/CreateProduct'
 import Item from '../components/Item/Item';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectListName } from '../redux/actions';
+import { useSelector } from 'react-redux';
 
 export default function(){
-
-    const dispatch = useDispatch()
-    const shopingLists = useSelector((state)=>state.shopingLists)
-    let index = useSelector((state)=>state.activeList)
-    let collectionProducts
-
-    if (shopingLists && shopingLists.length !== 0){
-        if(index >= shopingLists.length){
-            dispatch(selectListName(shopingLists.length-1))
-            index = shopingLists.length - 1
-        }
-        collectionProducts = shopingLists[index].products
+    const collectionProducts = useSelector((state)=>state.shopingLists[useSelector((state)=>state.activeList)])
+    let collection
+    try{
+        collection = collectionProducts.products
     }
-    else
-        collectionProducts = []
+    catch{
+        collection = []
+    }
 
     return(
         <div className="right-block">
             <Title>редактировать</Title>
-            <CollectionOfItems components={Product} collection={collectionProducts}/>
+            <CollectionOfItems components={Product} collection={collection}/>
             <Item>
                 <CreateProduct/>
             </Item>
