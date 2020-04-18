@@ -1,22 +1,24 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './Product.css'
 import BtnBlock from '../../components/BtnBlock/BtnBlock'
 import BtnIcon from '../../components/BtnIcon/BtnIcon';
+import Item from '../../components/Item/Item';
 
-export default function({list}){
+export default function({item, index}){
+
     return(
-        <Fragment>
+        <Item>
                 <div className='products'>
-                    <div className="product-name">{list.label}</div>
-                    <div className="product-count">{list.count}</div>
-                    <div className="product-price">{list.price}</div>
+                    <div className="product-name">{item.label}</div>
+                    <div className="product-count">{item.count}</div>
+                    <div className="product-price">{item.price}</div>
                 </div>
 
 
                 <BtnBlock>
                     <BtnIcon class={'btn-edit'}/>
-                    <BtnIcon class={'btn-remove'} onClick={()=>alert('fsdf')}/>
+                    <BtnIcon class={'btn-remove'}/>
                 </BtnBlock>
-        </Fragment>
+        </Item>
     )
 }

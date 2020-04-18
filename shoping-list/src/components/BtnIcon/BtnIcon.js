@@ -3,6 +3,10 @@ import './BtnIcon.css'
 
 export default function(props){
     return (
-        <button className={`btn-icon ${props.class}`} onClick={props.onClick}></button>
+        <button 
+            className={`btn-icon ${props.class}`}
+            onClick={props.handlerClick} 
+            >
+        </button>
     )
 }

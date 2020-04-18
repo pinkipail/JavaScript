@@ -1,25 +1,2 @@
 /* FORM NEW ITEM */
     
-.create-item{
-    margin: 0 5px;
-    font-size: 18px;
-    background:none;
-    border:none;
-    border-bottom: 2px solid #ff3f53;
-    text-align: center;
-    outline: none;
-    color: #fff;
-}
-
-.create-item[name="name"]{
-    width: 150px;
-}
-
-.create-item[name="count"]{
-    width:  60px;
-}
-
-.create-item[name="price"]{
-    width: 75px;
-}
-    

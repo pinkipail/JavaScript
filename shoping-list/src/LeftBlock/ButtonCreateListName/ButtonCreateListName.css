@@ -15,6 +15,8 @@
     font-size: 15pt;
     
     transition-duration: 0.4s;
+
+    user-select: none;
 }
 
 .left-block-item__create:hover{
