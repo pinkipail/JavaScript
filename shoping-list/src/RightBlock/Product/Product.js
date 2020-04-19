@@ -13,7 +13,7 @@ export default function({item, index}){
     return(
         <Item>
                 <div className='products'>
-                    <div className="product-name">{item.label}</div>
+                    <div className="product-label">{item.label}</div>
                     <div className="product-count">{item.count}</div>
                     <div className="product-price">{item.price}</div>
                 </div>

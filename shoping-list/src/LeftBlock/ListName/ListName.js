@@ -32,30 +32,34 @@ export default function({item, index}){
     function handlerChange(e){
         dispatch(changeListName(index, e.target.value))
     }
-    function displayChangeListName(event){
-        console.log(event.target)
-        
+    function displayChangeListName(){
+          
         if(changeFlag)
             disableChangeListName()
         else 
-            enableChangeListName(event)
+            enableChangeListName()
     }
 
-    function enableChangeListName(event){
+    function enableChangeListName(){
         setChangeFlag(true)
 
-        const btn = event.target
-        document.onclick = (e)=> {
-            if(e.target !== btn)
-            disableChangeListName()                
+        function handlerDocumentClick(e){
+            disableChangeListName()
+            document.removeEventListener('click', handlerDocumentClick)              
         }
-        document.addEventListener('keydown',(e)=>{
+
+        function handlerDocumentPressEnter(e){
             if (e.keyCode === 13) {
-            disableChangeListName()                
-            }
-        })
+                disableChangeListName() 
+                document.removeEventListener('keydown', handlerDocumentPressEnter)     
+            }        
+        }
+
+        document.addEventListener('click', handlerDocumentClick)
+        document.addEventListener('keydown',handlerDocumentPressEnter)
 
     }
+
     function disableChangeListName(){
         setChangeFlag(false)
     }
@@ -75,7 +79,7 @@ export default function({item, index}){
                     class={btnEdit}
                     handlerClick={(event)=>{
                         event.stopPropagation()
-                        displayChangeListName(event)
+                        displayChangeListName()
                     }
                     }
                 />

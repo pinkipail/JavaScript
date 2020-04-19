@@ -4,7 +4,8 @@ import { CREATE_LIST_NAME,
     SELECT_LIST_NAME, 
     SHOW_CREATE_LIST_NAME, 
     HIDE_CREATE_LIST_NAME,  
-    REMOVE_PRODUCT} from './types'
+    REMOVE_PRODUCT,
+    ADD_PRODUCT} from './types'
 
 const initialState = {
 
@@ -77,15 +78,26 @@ export const rootReducer = (state = initialState, action)=>{
 
         case HIDE_CREATE_LIST_NAME:
             return {...state, displayCreateListName: false}
+
     /* PRODUCT */
+
+        case ADD_PRODUCT:{
+            const newProduct =  { label: action.label, count: action.count, price: action.price }
+            let tempState = state.shopingLists
+            tempState[state.activeList].products = tempState[state.activeList].products.concat(newProduct)
+            return {
+                    ...state,
+                    shopingLists: tempState 
+                }
+        }            
+
+
         case REMOVE_PRODUCT:
             let changeShopingList = state.shopingLists[state.activeList]
             changeShopingList.products = changeShopingList.products.filter((item, i)=> i !== action.id)
-            console.log(changeShopingList);
             
             let tempState = state.shopingLists
             tempState.splice(state.activeList, 1, changeShopingList)
-            console.log(tempState)
             return {
                     ...state,
                     shopingLists: tempState

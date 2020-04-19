@@ -33,14 +33,14 @@
 
 }
 
-.product-name,
+.product-label,
 .product-count,
 .product-price{
     margin: 0 5px;
     display: inline-block;
 }
 
-.product-name {
+.product-label {
     padding-left: 15px;
     width: 150px;
 }
