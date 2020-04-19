@@ -18,8 +18,14 @@ export default function(props){
     const dispatch = useDispatch()
 
     function createProduct(){
-        dispatch(addProduct(inputState))
-        clearInput()
+        console.log(inputState)
+        console.log(initInpputState)
+        
+        if (inputState.label && inputState.count && inputState.price){
+            dispatch(addProduct(inputState))
+            clearInput()
+        }
+
     }
 
     function clearInput(){
