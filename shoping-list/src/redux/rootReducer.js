@@ -9,7 +9,8 @@ import { CREATE_LIST_NAME,
     CALCULATING_AMOUNT,
     CHECKED_PRODUCT,
     UNCHECKED_PRODUCT,
-    CALCULATING_PRESENT_AMOUNT} from './types'
+    CALCULATING_PRESENT_AMOUNT,
+    CHANGE_PRODUCT} from './types'
 
 const initialState = {
 
@@ -106,6 +107,25 @@ export const rootReducer = (state = initialState, action)=>{
                 }
         }            
 
+        case CHANGE_PRODUCT:{
+            const tempProducts = state.shopingLists[state.activeList].products.map((product, i) => {
+                if(i === action.index){
+                    product.label = action.label
+                    product.count = action.count
+                    product.price = action.price
+                }
+                return product
+            })
+
+            let tempShopingLists = state.shopingLists
+            tempShopingLists[state.activeList].products = tempProducts
+            
+            return {
+                ...state,
+                shopingLists: tempShopingLists
+            }
+        }
+
         case REMOVE_PRODUCT:{
             let changeShopingList = state.shopingLists[state.activeList]
             changeShopingList.products = changeShopingList.products.filter((item, i)=> i !== action.id)
@@ -175,8 +195,5 @@ export const rootReducer = (state = initialState, action)=>{
 
         default:
             return state
-
-
-
     }
 }

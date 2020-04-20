@@ -3,7 +3,8 @@ import { REMOVE_PRODUCT,
          CALCULATING_AMOUNT,
          CHECKED_PRODUCT,
          UNCHECKED_PRODUCT,
-         CALCULATING_PRESENT_AMOUNT} from "../types";
+         CALCULATING_PRESENT_AMOUNT,
+         CHANGE_PRODUCT} from "../types";
 
 
 export function addProduct({label, count, price}){
@@ -14,6 +15,17 @@ export function addProduct({label, count, price}){
         price
     }
 }
+
+export function changeProduct(index, {label, count, price}){
+    return {
+        type: CHANGE_PRODUCT,
+        index: index,
+        label,
+        count,
+        price
+    }
+}
+
 
 export function removeProduct(id){
     return {

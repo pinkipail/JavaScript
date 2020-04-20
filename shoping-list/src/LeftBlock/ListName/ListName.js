@@ -10,19 +10,19 @@ import Item from '../../components/Item/Item';
 import Input from '../../components/Input/Input';
 
 export default function({item, index}){
-    const dispatch = useDispatch()
     const activeList = useSelector((state)=>state.activeList)
-    const countCheckedProducts = useSelector((state)=>state.shopingLists[index].selectedProducts.length)
-    const countAllProducts = useSelector((state)=>state.shopingLists[index].products.length) + countCheckedProducts
     let active = (activeList === index ? 'active' : null)
 
+    const title = useSelector((state)=>state.shopingLists[activeList].title)
+
+    const [state, setState] = useState({listName: title, changeFlag:false})
     const [changeFlag, setChangeFlag] = useState(false)
 
     const btnEdit = changeFlag ? 'btn-confirm' : 'btn-edit'
     const listName = changeFlag 
         ? <Input 
             placeholder='название' 
-            value={item.title} 
+            value={state.listName} 
             className='list-name-input' 
             autoFocus  
             maxlenght='14'
@@ -30,41 +30,54 @@ export default function({item, index}){
         />
         : <span> {item.title}</span>
 
+    
+
     function handlerChange(e){
-        dispatch(changeListName(index, e.target.value))
+        setState({...state, listName: e.target.value})  
+        console.log('h', state.listName);
+        
+  /*       dispatch(changeListName(index, e.target.value))    */   
+    }
+
+    const dispatch = useDispatch()
+    function confirmChange(){
+        dispatch(changeListName(index, state.listName))
+        
     }
 
     function displayChangeListName(){
-          
-        if(changeFlag)
+        if(changeFlag){
+            confirmChange()
             disableChangeListName()
-        else 
+        }
+        else {
             enableChangeListName()
+        }
+                        
     }
 
+
     function enableChangeListName(){
-        setChangeFlag(true)
+        setChangeFlag(true)        
 
         function handlerDocumentClick(e){
             disableChangeListName()
-            document.removeEventListener('click', handlerDocumentClick)              
+            document.removeEventListener('click', handlerDocumentClick)   
+ 
         }
 
-        function handlerDocumentPressEnter(e){
-            if (e.keyCode === 13) {
-                disableChangeListName() 
-                document.removeEventListener('keydown', handlerDocumentPressEnter)     
-            }        
-        }
 
         document.addEventListener('click', handlerDocumentClick)
-        document.addEventListener('keydown',handlerDocumentPressEnter)
+  
 
     }
 
     function disableChangeListName(){
-        setChangeFlag(false)
+        setChangeFlag(false)        
     }
+
+    const countCheckedProducts = useSelector((state)=>state.shopingLists[index].selectedProducts.length)
+    const countAllProducts = useSelector((state)=>state.shopingLists[index].products.length) + countCheckedProducts
 
     return( 
         <Item 
@@ -84,8 +97,7 @@ export default function({item, index}){
                     handlerClick={(event)=>{
                         event.stopPropagation()
                         displayChangeListName()
-                    }
-                    }
+                    }}
                 />
                 <BtnIcon 
                     class='btn-remove'
