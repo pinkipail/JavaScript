@@ -1,10 +1,11 @@
-import React,{Fragment, useState} from 'react';
+import React,{ useState} from 'react';
 import './CreateProduct.css'
 import BtnBlock from '../../components/BtnBlock/BtnBlock'
 import BtnIcon from '../../components/BtnIcon/BtnIcon';
 import Input from '../../components/Input/Input';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../../redux/actions/actionsProduct';
+import Item from '../../components/Item/Item';
 
 export default function(props){    
 
@@ -17,10 +18,8 @@ export default function(props){
 
     const dispatch = useDispatch()
 
-    function createProduct(){
-        console.log(inputState)
-        console.log(initInpputState)
-        
+
+    function createProduct(){        
         if (inputState.label && inputState.count && inputState.price){
             dispatch(addProduct(inputState))
             clearInput()
@@ -33,19 +32,22 @@ export default function(props){
     }
 
     return (
-        <Fragment>
-            <form>
+        <Item className='create-product'>
+            <form >
                 <Input 
                     value={inputState.label}
                     handlerChange={(e)=>{handlerChangeInput(e,'label')}}
+                    maxlength='12'
                     placeholder='название' className='product-label'/>
                 <Input 
                     value={inputState.count}
                     handlerChange={(e)=>{handlerChangeInput(e,'count')}}
+                    maxlength='5'
                     placeholder='кол-во' className='product-count'/>
                 <Input 
                     value={inputState.price}
                     handlerChange={(e)=>{handlerChangeInput(e,'price')}}
+                    maxlength='7'
                     placeholder='цена' className='product-price'/>
             </form>
 
@@ -55,6 +57,6 @@ export default function(props){
                     handlerClick={createProduct}/>
                 <BtnIcon class={'btn-remove'} handlerClick={clearInput}/>
             </BtnBlock>
-        </Fragment>
+        </Item>
     )
 }

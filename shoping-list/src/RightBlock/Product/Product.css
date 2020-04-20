@@ -1,7 +1,39 @@
 /* CHECKBOX */
+.products {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition-duration: 0.4s;
+}
+
+.products::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+
+    position: absolute;
+    left: 0;
+
+    border: 1px solid #ff3f53   ;
+    
+}
+
+.products::before {
+    content: '';
+    display: inline-block;
+    height:18px;
+    width: 18px;
+    transition-duration: 0.4s;
+    background-image: url('../../components/BtnIcon/icon/btn-select-active.svg');
+    opacity: 0;
+    z-index: 2;
+}
+.products:hover::before {
+    opacity: 1;
+}
 
 .checkbox {
-    
     display: inline-block;
     height:16px;
     width: 16px;
@@ -11,27 +43,8 @@
 }
 .checkbox:hover{
     background-image: url('/public/icon/btn-select.svg');
-    background-size: 100%;
-    overflow:visible;
 }
 
-/* AMOUNT */
-
-.amount {
-    position: absolute;
-    bottom: 0;
-    right: 0;   
-
-    height: 100px;
-    width: 200px;
-    border-left: 2px solid #ff3f53;
-    border-top: 2px solid #ff3f53;
-
-    color: #fff;
-    font-size: 25pt;
-    font-weight: 300;
-
-}
 
 .product-label,
 .product-count,
@@ -41,17 +54,16 @@
 }
 
 .product-label {
-    padding-left: 15px;
-    width: 150px;
+    padding-left: 5px;
+    width: 170px;
 }
 
 .product-count {
-    width:  60px;
+    width:  85px;
     text-align: center;
 }
 
 .product-price {
-    width: 75px;
+    width: 85px;
     text-align: center;
 }
-

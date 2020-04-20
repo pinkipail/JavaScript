@@ -9,7 +9,7 @@ export default function(props){
             placeholder={props.placeholder}
             value={props.value}  
             className={`input ${props.className}`}
-            maxlenght={props.maxlenght}
+            maxLength={props.maxlength}
             type='text'
             autoComplete="off"
             autoFocus={props.autoFocus}

@@ -1,0 +1,22 @@
+.selected {
+    color: #999;
+}
+
+.selected::after {
+    border: 1px solid #999;
+}
+
+.selected::before {
+    content: '';
+    display: inline-block;
+    height:18px;
+    width: 18px;
+    transition-duration: 0.4s;
+    background-image: url('../../components/BtnIcon/icon/btn-select.svg');
+    opacity: 0.7;
+    z-index: 2;
+  
+}
+.selected:hover::before {
+    opacity: 0;
+}

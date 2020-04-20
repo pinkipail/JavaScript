@@ -1,5 +1,6 @@
 import { REMOVE_PRODUCT,
-         ADD_PRODUCT } from "../types";
+         ADD_PRODUCT, 
+         CALCULATING_AMOUNT} from "../types";
 
 
 export function addProduct({label, count, price}){
@@ -17,3 +18,11 @@ export function removeProduct(id){
         id: id
     }
 }
+
+export function calculatingAmount(amount){
+    return {
+        type: CALCULATING_AMOUNT,
+        amount
+    }
+}
+

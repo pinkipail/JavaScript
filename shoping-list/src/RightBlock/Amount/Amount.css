@@ -1,0 +1,22 @@
+.wrapper-amount {
+    padding: 5px 5px;
+    width: 250px;
+    position: absolute;
+    bottom: 0;
+    right: 0;   
+
+    border-left: 2px solid #ff3f53;
+    border-top: 2px solid #ff3f53;
+
+    color: #fff;
+    font-weight: 300;
+}
+
+.present-amount {
+    font-size: 20px;
+}
+
+.total-amount {
+    font-size: 25pt;
+    
+}

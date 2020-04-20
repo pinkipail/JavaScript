@@ -32,6 +32,7 @@ export default function({item, index}){
     function handlerChange(e){
         dispatch(changeListName(index, e.target.value))
     }
+
     function displayChangeListName(){
           
         if(changeFlag)
@@ -67,7 +68,9 @@ export default function({item, index}){
     return( 
         <Item 
             active={active}
-            handlerClick={()=>{dispatch(selectListName(index))}}
+            handlerClick={()=>{
+                dispatch(selectListName(index))
+            }}
             >
             <div>
                 -{listName}  <span className="left-block-item__count">(0/{countProducts})</span>

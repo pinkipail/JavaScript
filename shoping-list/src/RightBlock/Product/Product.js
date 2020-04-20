@@ -8,14 +8,14 @@ import { removeProduct } from '../../redux/actions/actionsProduct';
 
 export default function({item, index}){
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch()   
 
     return(
         <Item>
                 <div className='products'>
                     <div className="product-label">{item.label}</div>
                     <div className="product-count">{item.count}</div>
-                    <div className="product-price">{item.price}</div>
+                    <div className="product-price">{item.price}р</div>
                 </div>
 
 
