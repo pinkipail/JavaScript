@@ -5,33 +5,20 @@ import CollectionOfItems from '../components/CollectionOfItems/CollectionOfItems
 import Product from './Product/Product'
 import CreateProduct from './CreateProduct/CreateProduct'
 import SelectedProduct from './SelectedProduct/SelectedProduct'
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Amount from './Amount/Amount';
-import { calculatingAmount } from '../redux/actions/actionsProduct'
 
 export default function(){
-    const collectionProducts = useSelector((state)=>state.shopingLists[useSelector((state)=>state.activeList)])
-    let collection
-    try{
-        collection = collectionProducts.products
-    }
-    catch{
-        collection = []
-    }
-
-    const dispatch = useDispatch()
-
-    useEffect(()=>{
-        dispatch(calculatingAmount())
-        
-    },[collection])
+    
+    const collectionProducts= useSelector((state)=>state.shopingLists[useSelector((state)=>state.activeList)]).products
+    const collectionSelectedProducts = useSelector((state)=>state.shopingLists[useSelector((state)=>state.activeList)]).selectedProducts
 
     return(
         <div className="right-block">
             <Title>редактировать</Title>
-            <CollectionOfItems components={Product} collection={collection}/>
+            <CollectionOfItems components={Product} collection={collectionProducts}/>
             <CreateProduct/>
-            <CollectionOfItems components={SelectedProduct} collection={collection}/>
+            <CollectionOfItems components={SelectedProduct} collection={collectionSelectedProducts}/>
             <Amount/>
         </div>
     )

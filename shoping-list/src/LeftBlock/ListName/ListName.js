@@ -12,7 +12,8 @@ import Input from '../../components/Input/Input';
 export default function({item, index}){
     const dispatch = useDispatch()
     const activeList = useSelector((state)=>state.activeList)
-    const countProducts = useSelector((state)=>state.shopingLists[index].products.length)
+    const countCheckedProducts = useSelector((state)=>state.shopingLists[index].selectedProducts.length)
+    const countAllProducts = useSelector((state)=>state.shopingLists[index].products.length) + countCheckedProducts
     let active = (activeList === index ? 'active' : null)
 
     const [changeFlag, setChangeFlag] = useState(false)
@@ -73,7 +74,7 @@ export default function({item, index}){
             }}
             >
             <div>
-                -{listName}  <span className="left-block-item__count">(0/{countProducts})</span>
+                -{listName}  <span className="left-block-item__count">({countCheckedProducts}/{countAllProducts})</span>
             </div>
 
 

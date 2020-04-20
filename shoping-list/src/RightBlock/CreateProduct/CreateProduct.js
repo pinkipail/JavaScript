@@ -47,7 +47,7 @@ export default function(props){
                 <Input 
                     value={inputState.price}
                     handlerChange={(e)=>{handlerChangeInput(e,'price')}}
-                    maxlength='7'
+                    maxlength='5'
                     placeholder='цена' className='product-price'/>
             </form>
 

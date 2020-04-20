@@ -6,17 +6,24 @@ import { CREATE_LIST_NAME,
     HIDE_CREATE_LIST_NAME,  
     REMOVE_PRODUCT,
     ADD_PRODUCT,
-    CALCULATING_AMOUNT} from './types'
+    CALCULATING_AMOUNT,
+    CHECKED_PRODUCT,
+    UNCHECKED_PRODUCT,
+    CALCULATING_PRESENT_AMOUNT} from './types'
 
 const initialState = {
 
     shopingLists:[
         {
-            title: 'к чаю',
+            title: 'Сладкое',
             products: [
                 { label: 'Печенье', count: '1уп', price: '75' }, 
                 { label: 'Торт', count: '1шт', price: '345' },
                 { label: 'Чай', count: '2уп', price: '40' }
+            ],
+            selectedProducts: [
+                { label: 'Мороженое', count: '1шт', price: '175' }, 
+                { label: 'Йогурт', count: '1шт', price: '25' },
             ]
         },
         {
@@ -26,7 +33,8 @@ const initialState = {
                 { label: 'Молоко', count: '1л', price: '55' },
                 { label: 'Мясо', count: '2.5кг', price: '420' },
                 { label: 'Рыба', count: '1кг', price: '210' }
-            ]
+            ],
+            selectedProducts: []
         },
         {
             title: 'на салат',
@@ -37,7 +45,8 @@ const initialState = {
                 { label: 'Кукуруза', count: '1уп', price: '60' },
                 { label: 'Перец', count: '4шт', price: '90' },
                 { label: 'Петрушка', count: '30г', price: '30' }
-            ]
+            ],
+            selectedProducts: []
         }
     ],
     activeList: 0,
@@ -66,14 +75,16 @@ export const rootReducer = (state = initialState, action)=>{
 
             return {
                     ...state,
-                    shopingLists: state.shopingLists.filter((item, i)=> i !== action.payload),
+                    shopingLists: (state.shopingLists.length !==1)
+                        ? state.shopingLists.filter((item, i)=> i !== action.payload)
+                        : [{title: 'без названия', products: [], selectedProducts: []}],
                     activeList:tempActiveList
                 }
 
         case CREATE_LIST_NAME:
             return {
                     ...state,
-                    shopingLists: state.shopingLists.concat({title: action.payload, products: []}),
+                    shopingLists: state.shopingLists.concat({title: action.payload, products: [], selectedProducts: []}),
                     activeList: state.shopingLists.length
                 }
 
@@ -95,24 +106,71 @@ export const rootReducer = (state = initialState, action)=>{
                 }
         }            
 
-
         case REMOVE_PRODUCT:{
             let changeShopingList = state.shopingLists[state.activeList]
             changeShopingList.products = changeShopingList.products.filter((item, i)=> i !== action.id)
             
-            let tempState = state.shopingLists
-            tempState.splice(state.activeList, 1, changeShopingList)
+            let tempShopingLists = state.shopingLists
+            tempShopingLists.splice(state.activeList, 1, changeShopingList)
             return {
                     ...state,
-                    shopingLists: tempState
+                    shopingLists: tempShopingLists
                 }
         }
 
-        case CALCULATING_AMOUNT:
+        case CHECKED_PRODUCT:{
+            const tempProduct = state.shopingLists[state.activeList].products[action.id]
+
+            let changeShopingList = state.shopingLists[state.activeList]
+            changeShopingList.products = changeShopingList.products.filter((item, i)=> i !== action.id)
+            changeShopingList.selectedProducts = changeShopingList.selectedProducts.concat(tempProduct)
             
+            let tempShopingLists = state.shopingLists
+            tempShopingLists.splice(state.activeList, 1, changeShopingList)
             return {
                     ...state,
-                    totalAmount: state.shopingLists[state.activeList].products.reduce((accumulator, product) => accumulator + Number(product.price),0)
+                    shopingLists: tempShopingLists  
+                }
+            }
+
+        case UNCHECKED_PRODUCT:{
+
+            const tempProduct = state.shopingLists[state.activeList].selectedProducts[action.id]
+
+            let changeShopingList = state.shopingLists[state.activeList]
+            changeShopingList.selectedProducts = changeShopingList.selectedProducts.filter((item, i)=> i !== action.id)
+            changeShopingList.products = changeShopingList.products.concat(tempProduct)
+            
+            let tempShopingLists = state.shopingLists
+            tempShopingLists.splice(state.activeList, 1, changeShopingList)
+            return {
+                    ...state,
+                    shopingLists: tempShopingLists
+                }
+            }
+
+        case CALCULATING_PRESENT_AMOUNT:
+            let  presentAmount 
+            try {
+                presentAmount = state.shopingLists[state.activeList].selectedProducts.reduce((accumulator, product) => accumulator + Number(product.price),0)
+            }catch{
+                presentAmount = []
+            }
+            return {
+                    ...state,
+                    presentAmount: presentAmount
+                }
+        case CALCULATING_AMOUNT:
+            let  totalAmount 
+            try {
+                totalAmount = state.shopingLists[state.activeList].products.reduce((accumulator, product) => accumulator + Number(product.price), state.presentAmount)
+            }catch{
+                totalAmount = []
+            }
+
+            return {
+                    ...state,
+                    totalAmount: totalAmount
                 }
 
         default:

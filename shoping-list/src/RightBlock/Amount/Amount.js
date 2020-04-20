@@ -1,43 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Amount.css'
-import { useSelector, connect } from 'react-redux'
-import { calculatingAmount } from '../../redux/actions/actionsProduct';
+import { useSelector, useDispatch } from 'react-redux'
+import { calculatingPresentAmount, calculatingAmount } from '../../redux/actions/actionsProduct';
 
-class Amount extends React.Component {
+export default function() {
+    let collectionProducts = useSelector((state)=> state.shopingLists[state.activeList].products)
+    const dispatch = useDispatch()
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            presentAmount: props.presentAmount,
-            totalAmount: props.totalAmount
-        }
-            
-    }
+    useEffect(()=>{
+        dispatch(calculatingPresentAmount())
+        dispatch(calculatingAmount())
+    }, [collectionProducts]) 
+   
 
-    
-    render(){
-        return(
-            <div className='wrapper-amount'>
-                <div className='present-amount'>
-                    Куплено на сумму: {this.props.presentAmount}р
-                </div>
-                <div className='total-amount'>
-                    Всего: {this.props.totalAmount}р    
-                </div>
+
+
+    return(
+        <div className='wrapper-amount'>
+            <div className='present-amount'>
+                Куплено на сумму: {useSelector((state)=>state.presentAmount)}р
             </div>
-        )
-    }
+            <div className='total-amount'>
+                Всего: {useSelector((state)=>state.totalAmount)}р    
+            </div>
+        </div>
+    )
 }
-
-const mapDispatchToProps = {
-    calculatingAmount: calculatingAmount
-}
-
-const mapStateToProps = (state) => {    
-    return {
-        totalAmount: state.totalAmount,
-        presentAmount: state.presentAmount
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Amount)

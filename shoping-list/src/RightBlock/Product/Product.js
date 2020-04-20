@@ -4,15 +4,17 @@ import BtnBlock from '../../components/BtnBlock/BtnBlock'
 import BtnIcon from '../../components/BtnIcon/BtnIcon';
 import Item from '../../components/Item/Item';
 import { useDispatch } from 'react-redux';
-import { removeProduct } from '../../redux/actions/actionsProduct';
+import { removeProduct, checkedProduct } from '../../redux/actions/actionsProduct';
 
 export default function({item, index}){
 
     const dispatch = useDispatch()   
 
+
+
     return(
-        <Item>
-                <div className='products'>
+        <Item handlerClick={()=>{dispatch(checkedProduct(index))}}>
+                <div className='products' >
                     <div className="product-label">{item.label}</div>
                     <div className="product-count">{item.count}</div>
                     <div className="product-price">{item.price}р</div>
@@ -20,14 +22,19 @@ export default function({item, index}){
 
 
                 <BtnBlock>
-                    <BtnIcon class={'btn-edit'}/>
+                    <BtnIcon class={'btn-edit'}
+                        handlerClick={(event)=>{
+                            event.stopPropagation()
+                            
+                        }}
+                    />
                     <BtnIcon 
-                    class='btn-remove'
-                    handlerClick={(event)=>{
-                        event.stopPropagation()
-                        dispatch(removeProduct(index))}
-                    }
-                />
+                        class='btn-remove'
+                        handlerClick={(event)=>{
+                            event.stopPropagation()
+                            dispatch(removeProduct(index))}
+                        }
+                    />
                 </BtnBlock>
         </Item>
     )
