@@ -10,16 +10,13 @@ import Item from '../../components/Item/Item';
 import Input from '../../components/Input/Input';
 
 export default function({item, index}){
+    
     const activeList = useSelector((state)=>state.activeList)
     let active = (activeList === index ? 'active' : null)
+    const [state, setState] = useState({listName: item.title, changeFlag:false})
 
-    const title = useSelector((state)=>state.shopingLists[activeList].title)
-
-    const [state, setState] = useState({listName: title, changeFlag:false})
-    const [changeFlag, setChangeFlag] = useState(false)
-
-    const btnEdit = changeFlag ? 'btn-confirm' : 'btn-edit'
-    const listName = changeFlag 
+    const btnEdit = state.changeFlag ? 'btn-confirm' : 'btn-edit'
+    const listName = state.changeFlag 
         ? <Input 
             placeholder='название' 
             value={state.listName} 
@@ -30,55 +27,51 @@ export default function({item, index}){
         />
         : <span> {item.title}</span>
 
-    
-
-    function handlerChange(e){
-        setState({...state, listName: e.target.value})  
-        console.log('h', state.listName);
-        
-  /*       dispatch(changeListName(index, e.target.value))    */   
+    function handlerChange(e){        
+        setState({...state, listName: e.target.value})
     }
 
     const dispatch = useDispatch()
     function confirmChange(){
         dispatch(changeListName(index, state.listName))
-        
     }
 
-    function displayChangeListName(){
-        if(changeFlag){
+    function displayChangeListName(event){
+        if(state.changeFlag){
             confirmChange()
             disableChangeListName()
         }
         else {
-            enableChangeListName()
+            enableChangeListName(event)
         }
-                        
     }
 
 
-    function enableChangeListName(){
-        setChangeFlag(true)        
-
+    function enableChangeListName(event){
+        setState({...state, changeFlag: true})
+        
+        const target = event.target
         function handlerDocumentClick(e){
-            disableChangeListName()
-            document.removeEventListener('click', handlerDocumentClick)   
- 
+            if(e.target === target)
+                document.removeEventListener('click', handlerDocumentClick, true)
+
+            if(e.target.parentNode.parentNode !== target.parentNode.parentNode &&
+                e.target !== target.parentNode.parentNode &&
+                e.target !== target){
+                e.stopPropagation()
+                disableChangeListName()
+                document.removeEventListener('click', handlerDocumentClick, true)   
+            }
         }
-
-
-        document.addEventListener('click', handlerDocumentClick)
-  
-
+        document.addEventListener('click', handlerDocumentClick, true)
     }
 
     function disableChangeListName(){
-        setChangeFlag(false)        
+        setState({...state, changeFlag: false})        
     }
 
     const countCheckedProducts = useSelector((state)=>state.shopingLists[index].selectedProducts.length)
     const countAllProducts = useSelector((state)=>state.shopingLists[index].products.length) + countCheckedProducts
-
     return( 
         <Item 
             active={active}
@@ -96,7 +89,7 @@ export default function({item, index}){
                     class={btnEdit}
                     handlerClick={(event)=>{
                         event.stopPropagation()
-                        displayChangeListName()
+                        displayChangeListName(event)
                     }}
                 />
                 <BtnIcon 

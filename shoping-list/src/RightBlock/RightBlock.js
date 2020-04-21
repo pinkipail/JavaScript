@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './RightBlock.css'
 import Title from '../components/Title/Title';
 import CollectionOfItems from '../components/CollectionOfItems/CollectionOfItems'

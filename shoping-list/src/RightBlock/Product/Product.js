@@ -15,12 +15,8 @@ export default function({item, index}){
         ? ()=>{dispatch(checkedProduct(index))}
         : null
 
-    function handlerChangeInput(event, property){
-        setState({...state, products: {...state.products, [property]: event.target.value}})
-    }
-
     const btnEdit = state.changeFlag ? 'btn-confirm' : 'btn-edit'
-    const products = state.changeFlag 
+    const products = (state.changeFlag 
         ?<form >
             <Input 
                 value={state.products.label}
@@ -43,20 +39,24 @@ export default function({item, index}){
                 placeholder='цена' 
                 className='product-price'/>
         </form>
-        : ( <Fragment>
+        :  <Fragment>
                 <div className="product-label">{item.label}</div>
                 <div className="product-count">{item.count}</div>
                 <div className="product-price">{item.price}р</div>
             </Fragment>
- )
+        )
+ 
 
     const dispatch = useDispatch()   
+    function handlerChangeInput(event, property){
+        setState({...state, products: {...state.products, [property]: event.target.value}})
+    }
+
     function confirmChange(){
-        dispatch(changeProduct(index, state.products))
+        dispatch(changeProduct(index, state.products))        
     }
     
     function displayChangeProduct(event){
-        
         if(state.changeFlag){
             confirmChange()
             disableChangeProduct() 
@@ -78,7 +78,6 @@ export default function({item, index}){
                 disableChangeProduct()
                 document.removeEventListener('click', handlerDocumentClick, true)   
             }
-
         }
         document.addEventListener('click', handlerDocumentClick, true)
     }
