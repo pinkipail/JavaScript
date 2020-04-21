@@ -1,15 +1,20 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import './Product.css'
 import BtnBlock from '../../components/BtnBlock/BtnBlock'
 import BtnIcon from '../../components/BtnIcon/BtnIcon';
 import Item from '../../components/Item/Item';
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { removeProduct, checkedProduct, changeProduct } from '../../redux/actions/actionsProduct';
 import Input from '../../components/Input/Input';
 
 export default function({item, index}){
-
-    const [state, setState] = useState({products: item, changeFlag: false})    
+    const initialState = {products: item, changeFlag: false}
+    let [state, setState] = new useState(initialState)   
+    
+    useEffect(()=>{
+        setState({...state, products: item})
+    },[item])
+    
 
     const handlerClickProduct = (!state.changeFlag) 
         ? ()=>{dispatch(checkedProduct(index))}
@@ -29,15 +34,17 @@ export default function({item, index}){
             <Input 
                 value={state.products.count}
                 handlerChange={(e)=>{handlerChangeInput(e,'count')}}
+                type='number'
                 maxlength='5'
                 placeholder='кол-во' 
                 className='product-count'/>
             <Input 
                 value={state.products.price}
                 handlerChange={(e)=>{handlerChangeInput(e,'price')}}
+                type='number'
                 maxlength='5'
                 placeholder='цена' 
-                className='product-price'/>
+                className='product-price'/>р
         </form>
         :  <Fragment>
                 <div className="product-label">{item.label}</div>
@@ -49,7 +56,9 @@ export default function({item, index}){
 
     const dispatch = useDispatch()   
     function handlerChangeInput(event, property){
-        setState({...state, products: {...state.products, [property]: event.target.value}})
+        if(event.target.value.length <= event.target.maxLength){
+            setState({...state, products: {...state.products, [property]: event.target.value}})
+        }
     }
 
     function confirmChange(){
@@ -57,6 +66,8 @@ export default function({item, index}){
     }
     
     function displayChangeProduct(event){
+
+        
         if(state.changeFlag){
             confirmChange()
             disableChangeProduct() 

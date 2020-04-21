@@ -7,10 +7,10 @@ export default function(props){
         <input 
             onChange={props.handlerChange}
             placeholder={props.placeholder}
-            value={props.value}  
+            value={props.value}
             className={`input ${props.className}`}
             maxLength={props.maxlength}
-            type='text'
+            type={props.type}
             autoComplete="off"
             autoFocus={props.autoFocus}
         /> 

@@ -18,17 +18,19 @@ export default function({item, index}){
     const btnEdit = state.changeFlag ? 'btn-confirm' : 'btn-edit'
     const listName = state.changeFlag 
         ? <Input 
+            type='text'
             placeholder='название' 
             value={state.listName} 
             className='list-name-input' 
             autoFocus  
-            maxlenght='14'
+            maxlength='14'
             handlerChange={handlerChange}
         />
         : <span> {item.title}</span>
 
-    function handlerChange(e){        
-        setState({...state, listName: e.target.value})
+    function handlerChange(event){    
+        if(event.target.value.length <= event.target.maxLength)
+            setState({...state, listName: event.target.value})
     }
 
     const dispatch = useDispatch()

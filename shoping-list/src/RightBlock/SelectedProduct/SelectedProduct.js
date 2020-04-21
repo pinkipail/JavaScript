@@ -8,7 +8,7 @@ export default function({item, index}){
     const dispatch= useDispatch()
     return(
         <Item handlerClick={()=>{dispatch(uncheckedProduct(index))}}>
-                <div className='products selected'>
+                <div className='selected-products'>
                     <div className="product-label">{item.label}</div>
                     <div className="product-count">{item.count}</div>
                     <div className="product-price">{item.price}р</div>

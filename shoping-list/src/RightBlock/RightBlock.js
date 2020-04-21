@@ -16,8 +16,9 @@ export default function(){
     return(
         <div className="right-block">
             <Title>редактировать</Title>
-            <CollectionOfItems components={Product} collection={collectionProducts}/>
             <CreateProduct/>
+            <CollectionOfItems components={Product} collection={collectionProducts}/>
+           
             <CollectionOfItems components={SelectedProduct} collection={collectionSelectedProducts}/>
             <Amount/>
         </div>

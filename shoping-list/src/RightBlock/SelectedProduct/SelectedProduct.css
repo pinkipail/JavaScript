@@ -1,12 +1,17 @@
-.selected {
+.selected-products {
     color: #999;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition-duration: 0.4s;
 }
 
-.selected::after {
+.selected-products::after {
     border: 1px solid #999;
 }
 
-.selected::before {
+.selected-products::before {
     content: '';
     display: inline-block;
     height:18px;
@@ -17,6 +22,17 @@
     z-index: 2;
   
 }
-.selected:hover::before {
+.selected-products:hover::before {
     opacity: 0;
+}
+
+.selected-products::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+
+    position: absolute;
+    left: 0px;
+
+    border: 1px solid #999;
 }

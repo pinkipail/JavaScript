@@ -9,11 +9,13 @@ import Item from '../../components/Item/Item';
 
 export default function(props){    
 
-    const initInpputState = {label: '', count: '', price: ''}
-    const [inputState, setInputChange] = useState(initInpputState)
+    const initInputState = {label: '', count: '', price: ''}
+    const [inputState, setInputState] = useState(initInputState)
 
     function handlerChangeInput(event, property){
-        setInputChange({...inputState, [property]: event.target.value})
+        if(event.target.value.length <= event.target.maxLength){
+            setInputState({...inputState, [property]: event.target.value})
+        }
     }
 
     const dispatch = useDispatch()
@@ -26,7 +28,7 @@ export default function(props){
     }
 
     function clearInput(){
-        setInputChange(initInpputState)
+        setInputState(initInputState)
     }
 
     return (
@@ -36,15 +38,19 @@ export default function(props){
                     value={inputState.label}
                     handlerChange={(e)=>{handlerChangeInput(e,'label')}}
                     maxlength='12'
-                    placeholder='название' className='product-label'/>
+                    placeholder='название'
+                    className='product-label'/>
                 <Input 
                     value={inputState.count}
                     handlerChange={(e)=>{handlerChangeInput(e,'count')}}
+                    type='number'
                     maxlength='5'
-                    placeholder='кол-во' className='product-count'/>
+                    placeholder='кол-во'
+                    className='product-count'/>
                 <Input 
                     value={inputState.price}
                     handlerChange={(e)=>{handlerChangeInput(e,'price')}}
+                    type='number'
                     maxlength='5'
                     placeholder='цена' className='product-price'/>
             </form>

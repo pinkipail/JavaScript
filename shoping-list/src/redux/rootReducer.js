@@ -18,34 +18,34 @@ const initialState = {
         {
             title: 'Сладкое',
             products: [
-                { label: 'Печенье', count: '1уп', price: '75' }, 
-                { label: 'Торт', count: '1шт', price: '345' },
-                { label: 'Чай', count: '2уп', price: '40' }
+                { label: 'Печенье', count: '1', price: '75' }, 
+                { label: 'Торт', count: '1', price: '345' },
+                { label: 'Чай', count: '2', price: '40' }
             ],
             selectedProducts: [
-                { label: 'Мороженое', count: '1шт', price: '175' }, 
-                { label: 'Йогурт', count: '1шт', price: '25' },
+                { label: 'Мороженое', count: '1', price: '175' }, 
+                { label: 'Йогурт', count: '1', price: '25' },
             ]
         },
         {
             title: 'самое необхимое',
             products: [
-                { label: 'Хлеб', count: '1шт', price: '20' }, 
-                { label: 'Молоко', count: '1л', price: '55' },
-                { label: 'Мясо', count: '2.5кг', price: '420' },
-                { label: 'Рыба', count: '1кг', price: '210' }
+                { label: 'Хлеб', count: '1', price: '20' }, 
+                { label: 'Молоко', count: '1', price: '55' },
+                { label: 'Мясо', count: '2.5', price: '420' },
+                { label: 'Рыба', count: '1', price: '210' }
             ],
             selectedProducts: []
         },
         {
             title: 'на салат',
             products: [
-                { label: 'Помидоры', count: '2кг', price: '140' }, 
-                { label: 'Морковь', count: '3шт', price: '15' },
-                { label: 'Огурцы', count: '1кг', price: '90' },
-                { label: 'Кукуруза', count: '1уп', price: '60' },
-                { label: 'Перец', count: '4шт', price: '90' },
-                { label: 'Петрушка', count: '30г', price: '30' }
+                { label: 'Помидоры', count: '2', price: '140' }, 
+                { label: 'Морковь', count: '3', price: '15' },
+                { label: 'Огурцы', count: '1', price: '90' },
+                { label: 'Кукуруза', count: '1', price: '60' },
+                { label: 'Перец', count: '4', price: '90' },
+                { label: 'Петрушка', count: '30', price: '30' }
             ],
             selectedProducts: []
         }
@@ -172,7 +172,7 @@ export const rootReducer = (state = initialState, action)=>{
         case CALCULATING_PRESENT_AMOUNT:
             let  presentAmount 
             try {
-                presentAmount = state.shopingLists[state.activeList].selectedProducts.reduce((accumulator, product) => accumulator + Number(product.price),0)
+                presentAmount = state.shopingLists[state.activeList].selectedProducts.reduce((accumulator, product) => accumulator + Number(product.count)*Number(product.price),0)
             }catch{
                 presentAmount = []
             }
@@ -183,7 +183,7 @@ export const rootReducer = (state = initialState, action)=>{
         case CALCULATING_AMOUNT:
             let  totalAmount 
             try {
-                totalAmount = state.shopingLists[state.activeList].products.reduce((accumulator, product) => accumulator + Number(product.price), state.presentAmount)
+                totalAmount = state.shopingLists[state.activeList].products.reduce((accumulator, product) => accumulator + Number(product.price)*Number(product.count), state.presentAmount)
             }catch{
                 totalAmount = []
             }
