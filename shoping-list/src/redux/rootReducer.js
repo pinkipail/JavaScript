@@ -20,7 +20,7 @@ const initialState = JSON.parse(localStorage.getItem(keylocalStorage)) ||
     {
         shopingLists:[
             {
-                title: 'Сладкое',
+                title: 'сладкое',
                 products: [
                     { label: 'Печенье', count: '1', price: '75' }, 
                     { label: 'Торт', count: '1', price: '345' },
@@ -32,16 +32,6 @@ const initialState = JSON.parse(localStorage.getItem(keylocalStorage)) ||
                 ]
             },
             {
-                title: 'самое необхимое',
-                products: [
-                    { label: 'Хлеб', count: '1', price: '20' }, 
-                    { label: 'Молоко', count: '1', price: '55' },
-                    { label: 'Мясо', count: '2.5', price: '420' },
-                    { label: 'Рыба', count: '1', price: '210' }
-                ],
-                selectedProducts: []
-            },
-            {
                 title: 'на салат',
                 products: [
                     { label: 'Помидоры', count: '2', price: '140' }, 
@@ -49,13 +39,23 @@ const initialState = JSON.parse(localStorage.getItem(keylocalStorage)) ||
                     { label: 'Огурцы', count: '1', price: '90' },
                     { label: 'Кукуруза', count: '1', price: '60' },
                     { label: 'Перец', count: '4', price: '90' },
-                    { label: 'Петрушка', count: '30', price: '30' },
+                    { label: 'Петрушка', count: '1', price: '30' },
                     { label: 'Помидоры', count: '2', price: '140' }, 
                     { label: 'Морковь', count: '3', price: '15' },
                     { label: 'Огурцы', count: '1', price: '90' },
                     { label: 'Кукуруза', count: '1', price: '60' },
                     { label: 'Перец', count: '4', price: '90' },
-                    { label: 'Петрушка', count: '30', price: '30' }
+                    { label: 'Петрушка', count: '1', price: '30' }
+                ],
+                selectedProducts: []
+            },
+            {
+                title: 'для ремонта',
+                products: [
+                    { label: 'Краска', count: '5', price: '370' }, 
+                    { label: 'Обои', count: '13', price: '517' },
+                    { label: 'Клей', count: '3', price: '210' },
+                    { label: 'Гвозди', count: '2.5', price: '20' }
                 ],
                 selectedProducts: []
             }

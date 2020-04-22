@@ -22,6 +22,7 @@ export default function(){
                 <CollectionOfItems components={ListName} collection={collection}/>
                 <ButtonCreateListName/>
             </BlockScroll>
+            <div className='version'>v0.1</div>
         </div>
     )
     
@@ -34,6 +35,7 @@ export default function(){
                 <CollectionOfItems components={ListName} collection={collection}/>
                 <ButtonCreateListName/>
             </BlockScroll>
+            <div className='version'></div>
         </div>
     )
 }

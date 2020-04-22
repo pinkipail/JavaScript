@@ -3,7 +3,7 @@
     min-width: 350px;
     height: 600px;
 
-    border: 2px solid #ff3f53;
+    outline: 2px solid #ff3f53;
     position: relative;
 }
 

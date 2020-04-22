@@ -2,7 +2,7 @@
     min-width: 300px;
     height: 600px;
     
-    border: 2px solid #ff3f53;
+    outline: 2px solid #ff3f53;
     background: #000;
     z-index: 3;
     
@@ -11,6 +11,16 @@
 .left-block .title {
     color: #000;
     background:#ff3f53
+}
+
+.version {
+    padding-left: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+    font-weight: 300;
+    font-size: 0.75rem;
 }
 
 @media (max-width: 768px) { 
