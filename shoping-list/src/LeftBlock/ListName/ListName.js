@@ -5,7 +5,8 @@ import BtnIcon from '../../components/BtnIcon/BtnIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeListName,
          selectListName,
-         changeListName } from '../../redux/actions/actionsListName';
+         changeListName, 
+         toggleDisplayListName} from '../../redux/actions/actionsListName';
 import Item from '../../components/Item/Item';
 import Input from '../../components/Input/Input';
 
@@ -74,12 +75,22 @@ export default function({item, index}){
 
     const countCheckedProducts = useSelector((state)=>state.shopingLists[index].selectedProducts.length)
     const countAllProducts = useSelector((state)=>state.shopingLists[index].products.length) + countCheckedProducts
+
+    function getClientWidth(){
+        return document.compatMode == 'CSS1Compat' &&
+      !window.opera?document.documentElement.clientWidth:document.body.clientWidth;
+      }
+
+    function select(){
+        dispatch(selectListName(index))
+        if(getClientWidth() <= 768)
+            dispatch(toggleDisplayListName())
+        
+    }
     return( 
         <Item 
             active={active}
-            handlerClick={()=>{
-                dispatch(selectListName(index))
-            }}
+            handlerClick={select}
             >
             <div>
                 -{listName}  <span className="left-block-item__count">({countCheckedProducts}/{countAllProducts})</span>

@@ -12,7 +12,14 @@
     color: #fff;
 }
 
-@media (max-width: 576px) { 
+
+@media (max-width: 768px) { 
+
+    .right-block {
+        flex: 1 1 600px;
+        outline: none;
+        border: 2px solid #ff3f53;
+    }
     .right-block {
         height: 100vh;
     }

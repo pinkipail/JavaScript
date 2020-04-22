@@ -9,6 +9,14 @@ html{
     user-select: none;
 }
 
+input:not([type=checkbox]):not([type=radio]),
+textarea, 
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 ::selection {
     background: #ffb7b7;
 }
@@ -47,7 +55,7 @@ p{
     padding: 10px;
 }
 
-@media (max-width: 576px) { 
+@media (max-width: 768px) { 
     .container {
         padding: 0px;
     }
