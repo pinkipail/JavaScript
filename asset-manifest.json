@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/JavaScript/static/css/main.599a05f7.chunk.css",
+    "main.css": "/JavaScript/static/css/main.9217c9c8.chunk.css",
     "main.js": "/JavaScript/static/js/main.01de24ee.chunk.js",
     "main.js.map": "/JavaScript/static/js/main.01de24ee.chunk.js.map",
     "runtime-main.js": "/JavaScript/static/js/runtime-main.6a486c04.js",
@@ -8,9 +8,9 @@
     "static/js/2.5273ec53.chunk.js": "/JavaScript/static/js/2.5273ec53.chunk.js",
     "static/js/2.5273ec53.chunk.js.map": "/JavaScript/static/js/2.5273ec53.chunk.js.map",
     "index.html": "/JavaScript/index.html",
-    "precache-manifest.1612d9cb1e2bce6b65f3373cce3072fa.js": "/JavaScript/precache-manifest.1612d9cb1e2bce6b65f3373cce3072fa.js",
+    "precache-manifest.8b23d05bd49507513e7bf8f5c314c879.js": "/JavaScript/precache-manifest.8b23d05bd49507513e7bf8f5c314c879.js",
     "service-worker.js": "/JavaScript/service-worker.js",
-    "static/css/main.599a05f7.chunk.css.map": "/JavaScript/static/css/main.599a05f7.chunk.css.map",
+    "static/css/main.9217c9c8.chunk.css.map": "/JavaScript/static/css/main.9217c9c8.chunk.css.map",
     "static/js/2.5273ec53.chunk.js.LICENSE.txt": "/JavaScript/static/js/2.5273ec53.chunk.js.LICENSE.txt",
     "static/media/BtnIcon.css": "/JavaScript/static/media/btn-select.4d64993b.svg",
     "static/media/CreateListName.css": "/JavaScript/static/media/btn-remove.4acd55d1.svg",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.6a486c04.js",
     "static/js/2.5273ec53.chunk.js",
-    "static/css/main.599a05f7.chunk.css",
+    "static/css/main.9217c9c8.chunk.css",
     "static/js/main.01de24ee.chunk.js"
   ]
 }
