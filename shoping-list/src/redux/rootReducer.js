@@ -45,6 +45,12 @@ const initialState = {
                 { label: 'Огурцы', count: '1', price: '90' },
                 { label: 'Кукуруза', count: '1', price: '60' },
                 { label: 'Перец', count: '4', price: '90' },
+                { label: 'Петрушка', count: '30', price: '30' },
+                { label: 'Помидоры', count: '2', price: '140' }, 
+                { label: 'Морковь', count: '3', price: '15' },
+                { label: 'Огурцы', count: '1', price: '90' },
+                { label: 'Кукуруза', count: '1', price: '60' },
+                { label: 'Перец', count: '4', price: '90' },
                 { label: 'Петрушка', count: '30', price: '30' }
             ],
             selectedProducts: []

@@ -4,11 +4,11 @@
     position: absolute;
     bottom: 0;
     right: 0;   
+    background: #000;
 
     border-left: 2px solid #ff3f53;
     border-top: 2px solid #ff3f53;
-    background: #000;
-
+  
     color: #fff;
     font-weight: 300;
 }

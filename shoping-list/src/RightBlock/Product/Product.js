@@ -10,11 +10,10 @@ import Input from '../../components/Input/Input';
 export default function({item, index}){
     const initialState = {products: item, changeFlag: false}
     let [state, setState] = new useState(initialState)   
-    
+
     useEffect(()=>{
         setState({...state, products: item})
     },[item])
-    
 
     const handlerClickProduct = (!state.changeFlag) 
         ? ()=>{dispatch(checkedProduct(index))}
@@ -35,7 +34,7 @@ export default function({item, index}){
                 value={state.products.count}
                 handlerChange={(e)=>{handlerChangeInput(e,'count')}}
                 type='number'
-                maxlength='5'
+                maxlength='2'
                 placeholder='кол-во' 
                 className='product-count'/>
             <Input 

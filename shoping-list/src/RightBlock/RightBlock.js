@@ -1,6 +1,7 @@
 import React from 'react'
 import './RightBlock.css'
-import Title from '../components/Title/Title';
+import Title from '../components/Title/Title'
+import BlockScroll from '../components/BlockScroll/BlockScroll'
 import CollectionOfItems from '../components/CollectionOfItems/CollectionOfItems'
 import Product from './Product/Product'
 import CreateProduct from './CreateProduct/CreateProduct'
@@ -16,10 +17,11 @@ export default function(){
     return(
         <div className="right-block">
             <Title>редактировать</Title>
-            <CreateProduct/>
-            <CollectionOfItems components={Product} collection={collectionProducts}/>
-           
-            <CollectionOfItems components={SelectedProduct} collection={collectionSelectedProducts}/>
+            <BlockScroll>
+                <CreateProduct/>
+                <CollectionOfItems components={Product} collection={collectionProducts}/>
+                <CollectionOfItems components={SelectedProduct} collection={collectionSelectedProducts}/>
+            </BlockScroll>
             <Amount/>
         </div>
     )

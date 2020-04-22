@@ -1,0 +1,22 @@
+.block-scroll {
+    height: 546px;
+    overflow-x: auto
+}
+
+.block-scroll::-webkit-scrollbar {
+    width: 13px;
+}
+
+.block-scroll::-webkit-scrollbar-track {
+    background: #222;
+
+}
+.block-scroll::-webkit-scrollbar-thumb {
+    background: #ff3f53;
+
+    border: 5px solid #222;
+}
+
+.block-scroll-last {
+    height: 100px
+}

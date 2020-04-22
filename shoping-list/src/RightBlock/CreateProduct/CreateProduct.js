@@ -44,7 +44,7 @@ export default function(props){
                     value={inputState.count}
                     handlerChange={(e)=>{handlerChangeInput(e,'count')}}
                     type='number'
-                    maxlength='5'
+                    maxlength='2'
                     placeholder='кол-во'
                     className='product-count'/>
                 <Input 
