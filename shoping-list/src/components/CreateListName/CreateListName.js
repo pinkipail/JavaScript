@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React  from 'react';
 import "./CreateListName.css";
 import { connect } from 'react-redux';
 import {createListName, hideCreateListName} from '../../redux/actions/actionsListName';
@@ -59,9 +59,8 @@ class CreateListName extends React.Component{
                 </div>        
             )
         }
-        return (
-            <Fragment/>
-        )
+
+        return (null)
     }
    
 }

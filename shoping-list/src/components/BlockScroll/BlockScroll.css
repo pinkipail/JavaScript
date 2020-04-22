@@ -18,5 +18,19 @@
 }
 
 .block-scroll-last {
-    height: 100px
+    height: 80px
+}
+
+::-webkit-scrollbar {
+    width: 13px;
+}
+
+::-webkit-scrollbar-track {
+    background: #222;
+
+}
+::-webkit-scrollbar-thumb {
+    background: #ff3f53;
+
+    border: 5px solid #222;
 }

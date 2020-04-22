@@ -1,13 +1,19 @@
 .right-block {
-    width: 600px;
+    flex: 0 1 600px;
+    min-width: 350px;
     height: 600px;
 
     border: 2px solid #ff3f53;
-    border-left: none;
     position: relative;
 }
 
 
 .right-block .title{
     color: #fff;
+}
+
+@media (max-width: 576px) { 
+    .right-block {
+        height: 100vh;
+    }
 }

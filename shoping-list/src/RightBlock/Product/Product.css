@@ -66,3 +66,22 @@
     width: 70px;
     text-align: center;
 }
+
+@media (max-width: 576px) { 
+    .product-label {
+        padding-left: 5px;
+        width: 120px;
+    }
+    
+    .product-count {
+        width:  50px;
+    }
+    
+    .product-price {
+        width: 50px;
+    }
+
+    html {
+        font-size: 14px;
+    }
+}

@@ -3,7 +3,8 @@ import { CREATE_LIST_NAME,
          REMOVE_LIST_NAME, 
          SELECT_LIST_NAME, 
          SHOW_CREATE_LIST_NAME, 
-         HIDE_CREATE_LIST_NAME  } from "../types"
+         HIDE_CREATE_LIST_NAME,  
+         TOGGLE_DISPLAY_LIST_NAME} from "../types"
 
 export function selectListName(id){
     return {
@@ -37,6 +38,13 @@ export function createListName(name){
 export function showCreateListName(){
     return {
         type: SHOW_CREATE_LIST_NAME
+    }
+}
+
+
+export function toggleDisplayListName(){
+    return {
+        type: TOGGLE_DISPLAY_LIST_NAME
     }
 }
 

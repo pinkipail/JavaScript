@@ -5,15 +5,16 @@ import Title from '../components/Title/Title';
 import CollectionOfItems from '../components/CollectionOfItems/CollectionOfItems';
 import ListName from './ListName/ListName'
 import ButtonCreateListName from './ButtonCreateListName/ButtonCreateListName'
-import CreateListName from './CreateListName/CreateListName'
 import BlockScroll from '../components/BlockScroll/BlockScroll'
 
 export default function(){    
 
     const collection = useSelector((state) => state.shopingLists)
-    
+    const displayListName = useSelector((state) => state.displayListName)
+
+    if(displayListName) 
     return(
-        <div className="left-block">
+        <div className="left-block animated fadeInLeft">
             <Title>
                 список покупок
             </Title>
@@ -21,7 +22,18 @@ export default function(){
                 <CollectionOfItems components={ListName} collection={collection}/>
                 <ButtonCreateListName/>
             </BlockScroll>
-            <CreateListName/>
+        </div>
+    )
+    
+    return(
+        <div className="left-block animated fadeOutLeft">
+            <Title>
+                список покупок
+            </Title>
+            <BlockScroll>
+                <CollectionOfItems components={ListName} collection={collection}/>
+                <ButtonCreateListName/>
+            </BlockScroll>
         </div>
     )
 }

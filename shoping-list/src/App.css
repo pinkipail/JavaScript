@@ -4,6 +4,19 @@
     box-sizing: border-box; 
 }
 
+html{
+    font-size: 16px;
+    user-select: none;
+}
+
+::selection {
+    background: #ffb7b7;
+}
+::-moz-selection {
+    background: #ffb7b7; 
+}
+    
+
 input[type='number'] {
     -moz-appearance:textfield;
 }
@@ -27,12 +40,17 @@ p{
 /* CONTAINER */
 
 .container {
+    min-height: 100vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
 
-    margin: 25px auto;
-    width: 900px;
-    height: 600px;    
+@media (max-width: 576px) { 
+    .container {
+        padding: 0px;
+    }
 }
 
 

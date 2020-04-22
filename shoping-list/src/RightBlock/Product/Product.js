@@ -43,7 +43,7 @@ export default function({item, index}){
                 type='number'
                 maxlength='5'
                 placeholder='цена' 
-                className='product-price'/>р
+                className='product-price'/>
         </form>
         :  <Fragment>
                 <div className="product-label">{item.label}</div>

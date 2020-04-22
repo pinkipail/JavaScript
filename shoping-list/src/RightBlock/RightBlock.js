@@ -8,6 +8,7 @@ import CreateProduct from './CreateProduct/CreateProduct'
 import SelectedProduct from './SelectedProduct/SelectedProduct'
 import { useSelector } from 'react-redux';
 import Amount from './Amount/Amount';
+import MobileMenu from './MobileMenu/MobileMenu'
 
 export default function(){
     
@@ -16,7 +17,9 @@ export default function(){
 
     return(
         <div className="right-block">
-            <Title>редактировать</Title>
+            <Title>
+            <MobileMenu/>
+                редактировать</Title>
             <BlockScroll>
                 <CreateProduct/>
                 <CollectionOfItems components={Product} collection={collectionProducts}/>

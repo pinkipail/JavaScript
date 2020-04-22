@@ -10,7 +10,8 @@ import { CREATE_LIST_NAME,
     CHECKED_PRODUCT,
     UNCHECKED_PRODUCT,
     CALCULATING_PRESENT_AMOUNT,
-    CHANGE_PRODUCT} from './types'
+    CHANGE_PRODUCT,
+    TOGGLE_DISPLAY_LIST_NAME} from './types'
 
 const initialState = {
 
@@ -57,9 +58,11 @@ const initialState = {
         }
     ],
     activeList: 0,
-    displayCreateListName: false,
     presentAmount: 0,
-    totalAmount: 0
+    totalAmount: 0,
+    displayCreateListName: false,
+    displayListName: true
+
 
 }
 export const rootReducer = (state = initialState, action)=>{
@@ -100,6 +103,10 @@ export const rootReducer = (state = initialState, action)=>{
 
         case HIDE_CREATE_LIST_NAME:
             return {...state, displayCreateListName: false}
+
+        case TOGGLE_DISPLAY_LIST_NAME:
+            return {...state, displayListName: (state.displayListName === true) ? false : true}
+
 
     /* PRODUCT */
 
