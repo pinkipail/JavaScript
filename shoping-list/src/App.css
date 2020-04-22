@@ -9,13 +9,7 @@ html{
     user-select: none;
 }
 
-input:not([type=checkbox]):not([type=radio]),
-textarea, 
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
+
 
 ::selection {
     background: #ffb7b7;
@@ -25,14 +19,6 @@ select {
 }
     
 
-input[type='number'] {
-    -moz-appearance:textfield;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-}
 
 body {
     background: #000;
@@ -60,6 +46,4 @@ p{
         padding: 0px;
     }
 }
-
-
 
