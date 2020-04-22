@@ -13,6 +13,7 @@ export default function({item, index}){
 
     useEffect(()=>{
         setState({...state, products: item})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[item])
 
     const handlerClickProduct = (!state.changeFlag) 

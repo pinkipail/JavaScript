@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.be65f27c.chunk.css",
+    "main.js": "/static/js/main.c740b22a.chunk.js",
+    "main.js.map": "/static/js/main.c740b22a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.0b44813d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.0b44813d.js.map",
+    "static/js/2.5273ec53.chunk.js": "/static/js/2.5273ec53.chunk.js",
+    "static/js/2.5273ec53.chunk.js.map": "/static/js/2.5273ec53.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.a1068646b8133b6eb793c48a8b744c61.js": "/precache-manifest.a1068646b8133b6eb793c48a8b744c61.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.be65f27c.chunk.css.map": "/static/css/main.be65f27c.chunk.css.map",
+    "static/js/2.5273ec53.chunk.js.LICENSE.txt": "/static/js/2.5273ec53.chunk.js.LICENSE.txt",
+    "static/media/BtnIcon.css": "/static/media/btn-select.4d64993b.svg",
+    "static/media/CreateListName.css": "/static/media/btn-remove.4acd55d1.svg",
+    "static/media/Product.css": "/static/media/btn-select-active.8b75c836.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0b44813d.js",
+    "static/js/2.5273ec53.chunk.js",
+    "static/css/main.be65f27c.chunk.css",
+    "static/js/main.c740b22a.chunk.js"
+  ]
+}
