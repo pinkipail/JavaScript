@@ -13,58 +13,59 @@ import { CREATE_LIST_NAME,
     CHANGE_PRODUCT,
     TOGGLE_DISPLAY_LIST_NAME} from './types'
 
-const initialState = {
-
-    shopingLists:[
-        {
-            title: 'Сладкое',
-            products: [
-                { label: 'Печенье', count: '1', price: '75' }, 
-                { label: 'Торт', count: '1', price: '345' },
-                { label: 'Чай', count: '2', price: '40' }
-            ],
-            selectedProducts: [
-                { label: 'Мороженое', count: '1', price: '175' }, 
-                { label: 'Йогурт', count: '1', price: '25' },
-            ]
-        },
-        {
-            title: 'самое необхимое',
-            products: [
-                { label: 'Хлеб', count: '1', price: '20' }, 
-                { label: 'Молоко', count: '1', price: '55' },
-                { label: 'Мясо', count: '2.5', price: '420' },
-                { label: 'Рыба', count: '1', price: '210' }
-            ],
-            selectedProducts: []
-        },
-        {
-            title: 'на салат',
-            products: [
-                { label: 'Помидоры', count: '2', price: '140' }, 
-                { label: 'Морковь', count: '3', price: '15' },
-                { label: 'Огурцы', count: '1', price: '90' },
-                { label: 'Кукуруза', count: '1', price: '60' },
-                { label: 'Перец', count: '4', price: '90' },
-                { label: 'Петрушка', count: '30', price: '30' },
-                { label: 'Помидоры', count: '2', price: '140' }, 
-                { label: 'Морковь', count: '3', price: '15' },
-                { label: 'Огурцы', count: '1', price: '90' },
-                { label: 'Кукуруза', count: '1', price: '60' },
-                { label: 'Перец', count: '4', price: '90' },
-                { label: 'Петрушка', count: '30', price: '30' }
-            ],
-            selectedProducts: []
-        }
-    ],
-    activeList: 0,
-    presentAmount: 0,
-    totalAmount: 0,
-    displayCreateListName: false,
-    displayListName: true
+export const keylocalStorage = 'shoping-lists'
 
 
-}
+const initialState = JSON.parse(localStorage.getItem(keylocalStorage)) || 
+    {
+        shopingLists:[
+            {
+                title: 'Сладкое',
+                products: [
+                    { label: 'Печенье', count: '1', price: '75' }, 
+                    { label: 'Торт', count: '1', price: '345' },
+                    { label: 'Чай', count: '2', price: '40' }
+                ],
+                selectedProducts: [
+                    { label: 'Мороженое', count: '1', price: '175' }, 
+                    { label: 'Йогурт', count: '1', price: '25' },
+                ]
+            },
+            {
+                title: 'самое необхимое',
+                products: [
+                    { label: 'Хлеб', count: '1', price: '20' }, 
+                    { label: 'Молоко', count: '1', price: '55' },
+                    { label: 'Мясо', count: '2.5', price: '420' },
+                    { label: 'Рыба', count: '1', price: '210' }
+                ],
+                selectedProducts: []
+            },
+            {
+                title: 'на салат',
+                products: [
+                    { label: 'Помидоры', count: '2', price: '140' }, 
+                    { label: 'Морковь', count: '3', price: '15' },
+                    { label: 'Огурцы', count: '1', price: '90' },
+                    { label: 'Кукуруза', count: '1', price: '60' },
+                    { label: 'Перец', count: '4', price: '90' },
+                    { label: 'Петрушка', count: '30', price: '30' },
+                    { label: 'Помидоры', count: '2', price: '140' }, 
+                    { label: 'Морковь', count: '3', price: '15' },
+                    { label: 'Огурцы', count: '1', price: '90' },
+                    { label: 'Кукуруза', count: '1', price: '60' },
+                    { label: 'Перец', count: '4', price: '90' },
+                    { label: 'Петрушка', count: '30', price: '30' }
+                ],
+                selectedProducts: []
+            }
+        ],
+        activeList: 0,
+        presentAmount: 0,
+        totalAmount: 0,
+        displayCreateListName: false,
+        displayListName: true
+    }
 export const rootReducer = (state = initialState, action)=>{
 
     switch (action.type) {  

@@ -5,11 +5,17 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import { createStore, compose } from 'redux'
 import {Provider } from 'react-redux'
-import { rootReducer } from './redux/rootReducer'
+import { rootReducer, keylocalStorage } from './redux/rootReducer'
 
 const store = createStore(rootReducer, compose(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ))
+
+function syncingWithLocalStorage(){
+    localStorage.setItem(keylocalStorage, JSON.stringify(store.getState()))
+}
+
+store.subscribe(syncingWithLocalStorage)
 
 const app = (
     <Provider store={store}>
